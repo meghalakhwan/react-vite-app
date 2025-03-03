@@ -249,3 +249,27 @@ let ChildComponent = (props) => {
 };
 
 export default ChildComponent;
+
+
+// ! ===========  Unmounting Phase   ===========
+
+import React from "react";
+
+class ChildCompoennt extends React.Component {
+constructor(props){
+super();
+console.log(" I am Mounted ")
+}
+
+componentWillUnmount(){
+  console.log("I am componentWillUnmount() method ")
+}
+
+
+render() {
+  console.log("I am render method - childComponent");
+  return <h1>I am ChildComponent</h1>
+}
+}
+
+export default ChildCompoennt;
