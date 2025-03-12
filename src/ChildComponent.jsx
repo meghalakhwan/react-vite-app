@@ -220,59 +220,59 @@ export default ChildComponent;
 
 
 // import React from "react";
-import styles from "./FakeStoreApi.module.css"; // Renamed vn to styles for clarity
+// import styles from "./FakeStoreApi.module.css"; // Renamed vn to styles for clarity
 
-let ChildComponent = (props) => {
-  console.log(props);
-  return (
-    <>
-      <ul className={styles.productList}>
-        {props.product.map((val) => {
-          console.log(val);
-          return (
-            <li key={val.id} className={styles.productCard}>
-              <section className={styles.imageContainer}>
-                <img src={val.image} alt={val.title} />
-              </section>
-              <div className={styles.productInfo}>
-                <h3>{val.title}</h3>
-                <p style={{fontSize:"18px"}}><strong>Price:</strong> ${val.price}</p>
-               {/* <p><strong style={{sDisplay:"flex",flexWrap:"wrap"}}>Description:</strong> {val.description}</p> */}
-                <p><strong>Rating:</strong> {val.rating.rate} ⭐ ({val.rating.count} reviews)</p>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-    </>
-  );
-};
+// let ChildComponent = (props) => {
+//   console.log(props);
+//   return (
+//     <>
+//       <ul className={styles.productList}>
+//         {props.product.map((val) => {
+//           console.log(val);
+//           return (
+//             <li key={val.id} className={styles.productCard}>
+//               <section className={styles.imageContainer}>
+//                 <img src={val.image} alt={val.title} />
+//               </section>
+//               <div className={styles.productInfo}>
+//                 <h3>{val.title}</h3>
+//                 <p style={{fontSize:"18px"}}><strong>Price:</strong> ${val.price}</p>
+//                {/* <p><strong style={{sDisplay:"flex",flexWrap:"wrap"}}>Description:</strong> {val.description}</p> */}
+//                 <p><strong>Rating:</strong> {val.rating.rate} ⭐ ({val.rating.count} reviews)</p>
+//               </div>
+//             </li>
+//           );
+//         })}
+//       </ul>
+//     </>
+//   );
+// };
 
-export default ChildComponent;
-
-
-// ! ===========  Unmounting Phase   ===========
-
-import React from "react";
-
-class ChildCompoennt extends React.Component {
-constructor(props){
-super();
-console.log(" I am Mounted ")
-}
-
-componentWillUnmount(){
-  console.log("I am componentWillUnmount() method ")
-}
+// export default ChildComponent;
 
 
-render() {
-  console.log("I am render method - childComponent");
-  return <h1>I am ChildComponent</h1>
-}
-}
+// // ! ===========  Unmounting Phase   ===========
 
-export default ChildCompoennt;
+// import React from "react";
+
+// class ChildCompoennt extends React.Component {
+// constructor(props){
+// super();
+// console.log(" I am Mounted ")
+// }
+
+// componentWillUnmount(){
+//   console.log("I am componentWillUnmount() method ")
+// }
+
+
+// render() {
+//   console.log("I am render method - childComponent");
+//   return <h1>I am ChildComponent</h1>
+// }
+// }
+
+// export default ChildCompoennt;
 
 
 
@@ -280,7 +280,7 @@ export default ChildCompoennt;
 
 
 // ! ================= useEffect() Hook ==================
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 
 const ChildComponent = () => {
   let [myData, setData] = useState([]);
