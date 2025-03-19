@@ -1795,7 +1795,7 @@ class App extends React.Component {
 // import ChildComponent from "./ChildComponent";
 
 // const App = () => {
-//   // console.log("I am App Component");
+  // console.log("I am App Component");
 //   let [counter1, setCounter1] = useState(0);
 //   let [counter2, setCounter2] = useState(0);
 //   let [isDisplay, setDisplay] = useState(true);
@@ -2109,4 +2109,85 @@ It will helps us to add additional features to React.memo
 ? Working:
 1. It will stop the recreation of functions unless the dependency changed.
 2. as there is not recreation of function, function  reference will not change, as function reference not changed it props are not changed, as props not changed it will not re-render the component.
+
+
+
+import {useCallback, useState} from "react";
+import TitleComponent from "./TitleComponent";
+import CounterComponent from "./CounterComponent";
+import ButtonComponent from "./ButtonComponent";
+
+const App = ()=>{
+
+  let[age, setAge] = useState(20);
+  let[salary, setSalary] = useState(500000);
+
+  let handleAge = useCallback(()=>{
+    setAge(age + 1);
+  }, [age]);
+
+  let handleSalary = useCallback(()=>{
+    setSalary(salary + 10000);
+  }, [salary]);
+
+  return(
+    <>
+    <center>
+      <TitleComponent>useCallback() Hook</TitleComponent>
+      <CounterComponent data={age}>Age</CounterComponent>
+      <ButtonComponent fn={handleAge}>Update Age</ButtonComponent>
+
+      <CounterComponent data={salary}>Salary</CounterComponent>
+      <ButtonComponent fn={handleSalary}>Update Salary</ButtonComponent>
+
+    </center>
+  </>
+  )
+}
+
+export default App;
 */
+
+// ! ==========  useMemo() Hook ============
+
+// To handle heavy functions in React component we have to use useMemo() Hook.
+
+import { useMemo, useState } from "react";
+
+const App =()=> {
+  let[counter1, setCounter1] = useState(0);
+  let[counter2, setCounter2] = useState(0);
+
+// Syntax: useMemo(callback , [dependency]);
+
+let isEven = useMemo(()=>{
+  console.log("isEven is working");
+
+  let sum =0;
+  for(let i=0; i<=30000000; i++){
+    sum+=1;
+  }
+console.log(sum);
+
+return counter1 % 2===0;
+}, [counter1]);
+
+return(
+  <>
+  <h1>I am App Component</h1>
+  <h2>Counter1 : {counter1}</h2>
+  <button onClick={()=> setCounter1(counter1 + 1)}>Update Counter 1</button>
+
+  {isEven ? "Even" : "Odd"}
+
+  <h2>Counter2 : {counter2}</h2>
+  <button onClick={() => setCounter2(counter2+1)}>Update Counter 2</button>
+  
+  </>
+);
+};
+
+export default App;
+
+
+
