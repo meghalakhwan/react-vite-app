@@ -2150,7 +2150,7 @@ export default App;
 
 // ! ==========  useMemo() Hook ============
 
-// To handle heavy functions in React component we have to use useMemo() Hook.
+/* To handle heavy functions in React component we have to use useMemo() Hook.
 
 import { useMemo, useState } from "react";
 
@@ -2158,7 +2158,7 @@ const App =()=> {
   let[counter1, setCounter1] = useState(0);
   let[counter2, setCounter2] = useState(0);
 
-// Syntax: useMemo(callback , [dependency]);
+Syntax: useMemo(callback , [dependency]);
 
 let isEven = useMemo(()=>{
   console.log("isEven is working");
@@ -2188,6 +2188,38 @@ return(
 };
 
 export default App;
+*/
 
+// !============== React-Routing {version 5} =============
+
+import {BrowserRouter, NavLink} from "react-router-dom";
+import {Routes} from "react-router-dom";
+import { Route } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Login from "./pages/Login";
+const App = () => {
+  return (
+  <>
+   <BrowserRouter>
+   <nav id="mainNavbar">
+    <NavLink to="/home">Home</NavLink>
+    <NavLink to="/about">About</NavLink>
+    <NavLink to="/contact">Contact</NavLink>
+    <NavLink to="/login">Login</NavLink>
+   </nav>
+   <Routes>
+    <Route path="/home" element={<Home/>} />
+    <Route path="/about" element={<About/>} />
+    <Route path="/contact" element={<Contact/>} />
+    <Route path="/login" element={<Login/>} />
+   </Routes>
+   </BrowserRouter>
+   </>
+  )
+}
+
+export default App;
 
 
