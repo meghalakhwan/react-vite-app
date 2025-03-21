@@ -14,6 +14,8 @@ Components are classified into 2 ways
 2. Function based compoent
 */
 
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 // ? ======= Class based Components =============
 /*
 import { Component } from "react";
@@ -1795,7 +1797,7 @@ class App extends React.Component {
 // import ChildComponent from "./ChildComponent";
 
 // const App = () => {
-  // console.log("I am App Component");
+// console.log("I am App Component");
 //   let [counter1, setCounter1] = useState(0);
 //   let [counter2, setCounter2] = useState(0);
 //   let [isDisplay, setDisplay] = useState(true);
@@ -2182,44 +2184,101 @@ return(
 
   <h2>Counter2 : {counter2}</h2>
   <button onClick={() => setCounter2(counter2+1)}>Update Counter 2</button>
-  
   </>
-);
-};
+)};
 
 export default App;
-*/
 
-// !============== React-Routing {version 5} =============
 
-import {BrowserRouter, NavLink} from "react-router-dom";
-import {Routes} from "react-router-dom";
+!============== React-Routing {version 5} =============
+
+import { BrowserRouter, NavLink } from "react-router-dom";
+import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
+import Company from "./pages/aboutpages/company";
+import Employees from "./pages/aboutpages/employees";
+import Users from "./pages/aboutpages/users";
+import ContactHR from "./pages/contactpages/ContactHR";
+import ContactTrainer from "./pages/contactpages/ContactTrainer";
+import ContactCounsellor from "./pages/contactpages/ContactCounsellor";
+import LoginAdmin from "./pages/loginpages/LoginAdmin";
+import LoginUsers from "./pages/loginpages/LoginUsers";
+import Dashboard from "./pages/Dashboard";
+import HandleErrors from "./pages/HandleErrors";
 const App = () => {
   return (
-  <>
-   <BrowserRouter>
-   <nav id="mainNavbar">
-    <NavLink to="/home">Home</NavLink>
-    <NavLink to="/about">About</NavLink>
-    <NavLink to="/contact">Contact</NavLink>
-    <NavLink to="/login">Login</NavLink>
-   </nav>
-   <Routes>
-    <Route path="/home" element={<Home/>} />
-    <Route path="/about" element={<About/>} />
-    <Route path="/contact" element={<Contact/>} />
-    <Route path="/login" element={<Login/>} />
-   </Routes>
-   </BrowserRouter>
-   </>
-  )
-}
+    <>
+      <BrowserRouter>
+        <nav id="mainNavbar">
+          <NavLink to="/home">Home</NavLink>
+          <NavLink to="/about">About</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
+          <NavLink to="/login">Login</NavLink>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Dashboard/>}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />}>
+            <Route path="company" element={<Company />} />
+            <Route path="employees" element={<Employees />} />
+            <Route path="users" element={<Users />} />
+          </Route>
+          <Route path="/contact" element={<Contact />}>
+            <Route path="hrs" element={<ContactHR />} />
+            <Route path="trainers" element={<ContactTrainer />} />
+            <Route path="counsellors" element={<ContactCounsellor />} />
+            <Route />
+          </Route>
+          <Route path="/login" element={<Login />} >
+          <Route path="loginadmin" element={<LoginAdmin/>}/>
+          <Route path="loginusers" element={<LoginUsers/>}/>
+          </Route>
+          </Route>
+          <Route />
+          <Route path="*" element={<HandleErrors/>} />
+       </Routes>
+      </BrowserRouter>
+    </>
+  );
+};
 
 export default App;
+*/
 
+// !============== React-Routing {version 6} =============
 
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Login from "./pages/Login"
+const App=()=>{
+let router = createBrowserRouter([
+  {
+    path:"/home",
+    element :<Home />
+  },
+  {
+    path:"/about",
+    element :<About />
+  },
+  {
+    path:"/contact",
+    element :<Contact />,
+  
+  },
+  {
+    path:"/login",
+    element :<Login />
+  },
+])
+return(
+  <>
+  <RouterProvider router={router} />
+  </>
+)
+}
+export default App;
