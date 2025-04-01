@@ -14,7 +14,7 @@ Components are classified into 2 ways
 2. Function based compoent
 */
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // ? ======= Class based Components =============
 /*
@@ -1903,7 +1903,7 @@ export default App;
 /* 
 ? Step 1: 
 npm install axios
-npm i axios
++-----
 
 ? Step 2:
 import variableName from axios
@@ -2249,36 +2249,105 @@ const App = () => {
 export default App;
 */
 
-// !============== React-Routing {version 6} =============
 
+// !============== React-Routing {version 6} =============
+/*
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import Login from "./pages/Login"
+import Login from "./pages/Login";
+import Company from  "./pages/aboutpages/Company";
+import Employees from  "./pages/aboutpages/Employees";
+import Users from  "./pages/aboutpages/Users";
+import ContactHR from "./pages/contactpages/ContactHR"
+import ContactCounsellor from "./pages/contactpages/ContactCounsellor";
+import ContactTrainer from "./pages/contactpages/ContactTrainer";
+import LoginAdmin from "./pages/loginpages/LoginAdmin";
+import LoginUsers from "./pages/loginpages/LoginUsers";
+import Dashboard from "./pages/Dashboard";
+
 const App=()=>{
 let router = createBrowserRouter([
   {
-    path:"/home",
-    element :<Home />
-  },
+   path: "/",
+   element: <Dashboard />,
+   children: [
+    {
+      path:"/home",
+      element :<Home />
+    },
+    {
+      path:"/about",
+      element :<About />,
+      children: [{
+        path: "company",
+        element: <Company />
+      },
+    {
+      path: "employees",
+      element: <Employees />
+    },
   {
-    path:"/about",
-    element :<About />
-  },
+    path: "users",
+    element: <Users />
+  }
+    ,
+    {
+      path:"/contact",
+      element :<Contact />,
+      children: [{
+        path: "hrs",
+        element: <ContactHR />
+      },
+    {
+      path: "trainers",
+      element: <ContactTrainer />
+    },
   {
-    path:"/contact",
-    element :<Contact />,
+    path: "counsellors",
+    element: <ContactCounsellor />
+  }]  
+    },
+    {
+      path:"/login",
+      element :<Login />,
+      children: [{
+        path: "loginadmin",
+        element: <LoginAdmin/>
+      },
+    {
+      path: "loginusers",
+      element: <LoginUsers/>
+    }
+    ]
   
-  },
-  {
-    path:"/login",
-    element :<Login />
-  },
-])
+    },
+  ])
 return(
   <>
   <RouterProvider router={router} />
   </>
 )
 }
+export default App;
+*/
+
+
+// ! ==========  Error Boundaries ================
+
+// ? Example 1:
+
+import Cart from "./error boundaries/Cart";
+import CartTwo from "./error boundaries/CartTwo"
+const App = () => {
+  return (
+    <>
+    <section style={{ border: "solid red", height: "500px", width: "800px" }}>
+    <Cart />
+    <CartTwo />
+    </section>
+    </>
+  )
+}
+
 export default App;
